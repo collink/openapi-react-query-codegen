@@ -101,7 +101,7 @@ export function extractPropertiesFromObjectParam(param: ParameterDeclaration) {
     .map((prop) => ({
       name: prop.getName(),
       optional: prop.isOptional(),
-      type: prop.getValueDeclaration()?.getType() as Type<ts.Type>,
+      type: prop.getValueDeclaration()?.getType(),
     }));
   return paramNodes;
 }
@@ -116,7 +116,7 @@ export function extractPropertiesFromObjectParam(param: ParameterDeclaration) {
  * TODO: Replace with a more robust solution.
  */
 export function getShortType(type: string) {
-  return type.replaceAll(/import\(".*?"\)\./g, "");
+  return type.replaceAll(/import\(".*"\)\./g, "");
 }
 
 export function getClassesFromService(node: SourceFile) {
